@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>파일 읽기</title>
+</head>
+<body>
+ <input id="file" type="file" onchange="fileRead();"><br><br>
+ <textarea id="content" readonly placeholder="이곳에 파일을 드롭하세요"
+           ondrop="dropFile(event)"
+           ondragover="cancelDefault(event)"
+           ondragenter="cancelDefault(event)"
+           style="width:700px; height:400px;"></textarea>
+<script>
+ function cancelDefault(event){
+    event.preventDefault();
+ }
+
+ function dropFile(event){
+
+ }
+
+ function fileRead(){
+    var file = document.getElementById("file").files[0];
+    var view = document.getElementById("content");
+    var reader = new FileReader();
+    reader.readAsText(file, "utf-8");
+    reader.onload = function(){
+        view.textContent = reader.result;
+    };
+    reader.onerror = function(event){
+        switch(event.target.error.code){
+            case error.NOT_FOUND_ERR:
+                alert("1");
+                break;
+            case error.SECURITY_ERR:
+                alert("2");
+                break;
+            case error.ABORT_ERR:
+                alert("3");
+                break;
+            case error.NOT_READABLE_ERR:
+                alert("4");
+                break;
+            case error.ENCODING_ERR:
+                alert("5");
+                break;
+        }
+    }
+ }
+
+</script>
+</body>
+</html>

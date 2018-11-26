@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Hello from Flask</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+function dragover(event){
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "copy"
+}
+function dragstart(event){
+    event.dataTransfer.setData("text", event.target.id);
+    event.dataTransfer.effectAllowed = "copy";
+}
+function drop(event){
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+}
+</script>
+<style>
+* { box-sizing: border-box }
+/* w/h 속성값 -> 콘텐츠크기 + 패딩크기 + 테두리크기 */
+
+body { background-color: lightyellow; }
+
+.col-1 {width: 8.33%; }
+.col-2 {width: 16.66%; }
+.col-3 {width: 25%; }
+.col-4 {width: 33.33%; }
+.col-5 {width: 41.66%; }
+.col-6 {width: 50%; }
+.col-7 {width: 58.33%; }
+.col-8 {width: 66.66%; }
+.col-9 {width: 75%; }
+.col-10 {width: 83.33%; }
+.col-11 {width: 91.66%; }
+.col-12 {width: 100%; }
+
+[class*="col-"]{
+    /* 공통 콜 속성. 옆으로 띄운다. */
+    float: left;
+    padding: 15px;
+    border: 1px solid red;
+}
+
+@media only screen and (max-width: 650px) {
+    [class*="col-"]{
+        width: 100%;
+    }
+}
+
+.header{
+    background-color: YellowGreen; }
+
+.content{
+    background-color: Beige;       }
+
+#pictureFrame{
+    background-size: contain; }
+
+#rect1, #rect2 {
+    float:left; width:100px; height150px;
+    border: 1px solid; padding:10px; margin:5px;    }
+#rect1 {
+    background-color: lightyellow;}
+#rect2 {
+    background-color: lightgreen; }
+
+
+.sidebar{
+    background-color: LightCyan; }
+
+.footer{
+    clear: both;
+    background-color: LightSteelBlue; }
+
+</style>
+</head>
+<body>
+<div class="col-12 header"><h1>반응형 웹</h1></div>
+<div class="col-9 content">
+<div id="pictureFrame">
+ <picture>
+     <source media="(min-width: 700px)" srcset="">
+     <source media="(min-width: 500px)" srcset="">
+     <source media="(min-width: 600px)" srcset="">
+     <img src="">
+ </picture>
+</div>
+
+<div id="rect1" ondrop="drop(event)" ondragover="dragover(event)">
+    <img id="image" src="../static/hongseok.jpg" width="100" height="100" ondragstart="dragstart(event)" draggable="true">
+</div>
+<div id="rect2" ondrop="drop(event)" ondragover="dragover(event)">
+
+</div>
+    <!--
+{% if name %}
+<h2> Hello, {{ name  }} </h2>
+{% else %}
+<h2> Hello, World! </h2>
+{% endif %}
+-->
+</div>
+<div class="col-3 sidebar">
+    <ul>
+        <li><h4 style="font-size: 1vw;"> 메뉴1</h4></li>
+        <li><h4 style="font-size: 1vw;">메뉴1</h4></li>
+        <li><h4 style="font-size: 1vw;">메뉴1</h4></li>
+    </ul>
+</div>
+
+<div class="col-12 footer"> FOOTER </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        window.onload = function(){
+        /*
+            var editor = document.getElementById("div1");
+            if(editor.isContentEditable){
+                editor.focus();
+            }
+            */
+
+            document.designMode = "on";
+        }
+
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<div id="div1"> 1. div영역 </div>
+<div id="div2"> 2. div영역 </div>
+<div id="div3" contenteditable>
+    <div id="div3-1"> 3-1. div영역 </div>
+    <div id="div3-2"> 3-2. div영역 </div>
+</div>
+</body>
+</html>

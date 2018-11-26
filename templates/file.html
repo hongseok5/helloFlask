@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>파일 정보 읽기</title>
+</head>
+<body>
+ <input id="file" type="file" onchange="fileInfo();"><br><br>
+ <table id="table" border
+        style="border: red; border-collapse:collapse;"></table>
+<script>
+    function fileInfo(){
+        var file = document.getElementById("file").files[0];
+        document.getElementById("table").innerHTML =
+            "<tr><td>파일 이름</td><td>" + file.name
+                                        + file.size
+                                        + file.type
+                                        + file.lastModifiedDate.toLocaleDateString()
+                                        + "</td></tr>";
+    }
+</script>
+</body>
+</html>
